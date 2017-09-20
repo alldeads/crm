@@ -1,0 +1,17 @@
+Options -Indexes
+
+SetEnvIfNoCase User-Agent "^libwww-perl*" block_bad_bots
+Deny from env=block_bad_bots
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_METHOD} ^TRACE
+  RewriteRule .* - [F]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options nosniff
+  Header always append X-Frame-Options SAMEORIGIN
+  Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+

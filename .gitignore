@@ -1,0 +1,8 @@
+.idea
+config.inc.php
+/cache
+/logs
+/storage
+/test
+user_privileges
+
